@@ -21,7 +21,7 @@
             </style>
         @endif
     </head>
-    <body class="font-sans py-12  antialiased dark:bg-black dark:text-white/50 flex items-center bg-gradient-to-b from-gray-100 to-yellow-100 justify-center min-h-full">
+    <body class="font-sans py-12 antialiased flex items-center bg-gradient-to-b from-gray-100 to-yellow-100 justify-center min-h-full">
         <div class="relative p-12 flex flex-col gap-12 max-w-4xl mx-auto bg-white shadow-sm border border-yellow-200 border-opacity-50 rounded-2xl">
             @if(session('success'))
                 <div class="bg-green-100 border-green-200 text-green-800 rounded-xl p-9">
