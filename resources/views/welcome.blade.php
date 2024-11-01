@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="min-h-full">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,7 @@
             </style>
         @endif
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50 flex items-center bg-gradient-to-b from-gray-100 to-yellow-100 justify-center h-full">
+    <body class="font-sans py-12  antialiased dark:bg-black dark:text-white/50 flex items-center bg-gradient-to-b from-gray-100 to-yellow-100 justify-center min-h-full">
         <div class="relative p-12 flex flex-col gap-12 max-w-4xl mx-auto bg-white shadow-sm border border-yellow-200 border-opacity-50 rounded-2xl">
             @if(session('success'))
                 <div class="bg-green-100 border-green-200 text-green-800 rounded-xl p-9">
@@ -33,7 +33,7 @@
                 <h1 class="text-2xl font-bold tracking-tight border-2 bg-white rounded-full px-6 py-1">📟 {{ config('app.name') }}</h1>
             </div>
 
-            <h2 class="text-8xl font-bold tracking-tight">Schedule a Meeting</h2>
+            <h2 class="text-4xl xl:text-8xl font-bold tracking-tight">Schedule a Meeting</h2>
 
             <form action="/meetings" method="POST" class="flex flex-col gap-3">
                 @csrf
