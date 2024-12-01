@@ -13,6 +13,7 @@ class Professional extends Model
         'name',
         'email',
         'specialization',
+        'status',
     ];
 
     public function availabilities()
@@ -23,5 +24,10 @@ class Professional extends Model
     public function meetings()
     {
         return $this->hasMany(Meeting::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'professional_user', 'professional_id', 'user_id');
     }
 }

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'credits',
     ];
 
     /**
@@ -44,5 +45,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function professionals()
+    {
+        return $this->belongsToMany(User::class, 'professional_user', 'user_id', 'professional_id');
+
     }
 }

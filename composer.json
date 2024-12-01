@@ -7,8 +7,12 @@
     "require": {
         "php": "^8.2",
         "google/apiclient": "^2.18",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/reverb": "*",
+        "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5",
+        "mollie/laravel-mollie": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -39,7 +43,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:puzblish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

@@ -4,10 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfessionalController;
 use App\Http\Controllers\MeetingController;
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\RinkelController;
+use App\Livewire\WebhookHandler;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ChatController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -15,7 +16,35 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', [ProfessionalController::class, 'index']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat/start', [ChatController::class, 'start'])->name('chat.start');
+    Route::post('/chat/send', [ChatController::class, 'send'])->name('chat.send');
+    Route::get('/chat/messages/{chat}', [ChatController::class, 'messages'])->name('chat.messages');
+});
+
+//Route::get('/', [ProfessionalController::class, 'index']);
 Route::post('/meetings', [MeetingController::class, 'store']);
+
+Route::get('/create-payment', [PaymentController::class, 'createPayment'])->name('payment.create');
+Route::get('/payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+Route::post('/webhooks/mollie', [PaymentController::class, 'handleWebhook'])->name('webhooks.mollie');
+
+Route::get('/rinkel/data', [RinkelController::class, 'getSomeData']);
+Route::post('/rinkel/data', [RinkelController::class, 'postSomeData']);
+Route::get('/rinkel/numbers', [RinkelController::class, 'listAllNumbers']);
+
+Route::post('/webhook/rinkel', [WebhookHandler::class, 'handleWebhook'])->name('webhook.rinkel');
+
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/send-magic-link', [LoginController::class, 'sendMagicLink'])->name('send.magic.link');
+Route::get('/login/{token}', [LoginController::class, 'loginWithMagicLink'])->name('login.magic.link');
+Route::get('/magic-link-sent', function () {
+    return view('auth.magic-link-sent');
+})->name('magic.link.sent');
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::post('/send-message', [ChatController::class, 'sendMessage'])->middleware('auth');
 
 require __DIR__.'/auth.php';

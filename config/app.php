@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'rinkel_api' => env('RINKEL_API', null),
+    'rinkel_number_id' => env('RINKEL_NUMBER_ID', null),
+
 ];
