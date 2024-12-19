@@ -18,10 +18,16 @@ class ChatController extends Controller
 
     public function start(Request $request)
     {
-        $chat = new Chat();
-        $chat->user_id = Auth::id();
-        $chat->professional_id = $request->professional_id;
-        $chat->save();
+        $chat = Chat::where('user_id', Auth::id())
+            ->where('professional_id', $request->professional_id)
+            ->first();
+
+        if (!$chat) {
+            $chat = new Chat();
+            $chat->user_id = Auth::id();
+            $chat->professional_id = $request->professional_id;
+            $chat->save();
+        }
 
         return redirect()->route('chat.messages', ['chat' => $chat->id]);
     }

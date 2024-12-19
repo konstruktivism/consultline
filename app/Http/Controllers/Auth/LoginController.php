@@ -38,10 +38,11 @@ class LoginController extends Controller
 
         Mail::send('auth.emails.magic-link', ['link' => $link], function ($message) use ($user) {
             $message->to($user->email);
-            $message->subject('Your Magic Login Link');
+            $message->subject('Login with magic link');
+            $message->from('info@consultline.nl', 'Consultine');
         });
 
-        return redirect()->route('magic.link.sent')->with('status', 'If your email is registered, you will receive a magic link.');
+        return redirect()->route('magic.link.sent');
     }
 
     public function loginWithMagicLink($token)

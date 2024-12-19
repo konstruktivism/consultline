@@ -19,8 +19,8 @@
 </head>
 <body class="bg-gradient-to-tr text-neutral-600 from-blue-100 to blue-200 flex items-center justify-between h-full min-h-full w-full">
     <div class="m-12 shadow bg-white p-6 py-12 text-center rounded border-b-2 border-blue-200 mx-auto">
-        <h1 class="text-2xl font-bold text-blue-600 mb-6 decoration-wavy decoration-blue-100 underline-offset-8 underline">Controleer je mailbox</h1>
-        <p class="text-balance">Er is een magische link verstuurd naar het opgegeven e-mailadres, open de link en je bent ingelogd ✨</p>
+        <h1 class="text-2xl font-bold text-blue-600 mb-6 decoration-wavy decoration-blue-100 underline-offset-8 underline">Check your inbox</h1>
+        <p class="text-balance">A magical link has been sent to the provided email address. Open the link, and you’ll be logged in. ✨</p>
     </div>
 </body>
 </html>

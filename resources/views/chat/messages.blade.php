@@ -1,43 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white w-full flex justify-center items-center pb-6 md:pb-12">
-        <div class="flex flex-col gap-6 items-center justify-between w-full">
-            <div class="flex gap-3 items-center">
-                <div class="px-6 bg-green-200 py-1 text-center text-green-700 rounded-lg">
-                    <span id="time-counter">0:00</span>
-                </div>
+    <div class="bg-white w-full flex flex-col  items-center">
+            <div class="px-6 bg-green-200 py-1 text-center text-green-700 rounded-lg">
+                <span id="time-counter">0:00</span>
+            </div>
 
-                <a href="/" class="grow">Sluit chat</a>
+                <a href="/">Close Chat</a>
             </div>
 
             @if(auth()->id() === $chat->professional_id)
-                <div class="flex gap-6 w-full items-center justify-between">
+                <div class="flex gap-6 w-full items-center h-full">
                     <div class="flex flex-col gap-1 grow">
-                        <div class="text-2xl xl:max-w-4xl xl:mx-auto">Sander</div>
-
-                        <div>
-                            <span class="bg-green-500 text-white rounded-full font-normal text-sm px-3 py-1">Credits: 25 minuten... </span>
-                        </div>
+                        <div class="text-2xl xl:max-w-4xl xl:mx-auto">{{ auth()->user()->name }}</div>
                     </div>
                 </div>
             @else
-                <div class="flex gap-6 w-full items-center justify-between">
+                <div class="flex gap-6 w-full">
                     <img src="{{ asset('profile.jpg') }}" alt="Profile Avatar" class="rounded-full w-16 h-16">
 
                     <div class="flex flex-col gap-1 grow">
-                        <div class="text-2xl xl:max-w-4xl xl:mx-auto">Willemijn</div>
+                        <div class="text-xl tracking-tight xl:max-w-4xl">Sander van der Kolk</div>
 
-                        <div>
-                            <span class="bg-green-500 text-white rounded-full font-normal text-sm px-3 py-1">Chat gestart</span>
-                        </div>
                     </div>
-
-                    <p class="text-balance w-1/2 text-right text-neutral-500 italic"> Hallo! Ik ben Willemijn, fysiotherapeute met passie voor het helpen van mensen om vrijer en zonder pijn te bewegen</p>
                 </div>
             @endif
 
-            <div id="chat-messages" class=" border drop-shadow-sm rounded-lg p-3 w-full flex flex-col gap-px">
+            <div id="chat-messages" class=" border drop-shadow-sm rounded-lg p-3 w-full flex flex-col gap-px grow h-full">
                 @foreach($messages as $message)
                     <div class="flex {{ $message->user->id === auth()->id() ? 'justify-end' : 'justify-start' }} message p-1">
                         <div class="{{ $message->user->id === auth()->id() ? 'bg-green-200' : 'bg-white border' }} p-1 px-2 rounded-lg">
@@ -57,7 +46,6 @@
                 <meta name="csrf-token" content="{{ csrf_token() }}">
             </form>
         </div>
-    </div>
     <script>
         window.chatId = {{ $chat->id }};
         window.authUserId = {{ auth()->id() }};
@@ -81,10 +69,6 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    // const chatMessages = document.getElementById('chat-messages');
-                    // const newMessage = document.createElement('p');
-                    // newMessage.innerHTML = `<strong>${data.user_name}:</strong> ${data.message.message}`;
-                    // chatMessages.appendChild(newMessage);
                     messageInput.value = '';
                 })
                 .catch(error => console.error('Error:', error));

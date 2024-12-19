@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfessionalController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\RinkelController;
 use App\Livewire\WebhookHandler;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ChatController;
@@ -29,12 +28,6 @@ Route::post('/meetings', [MeetingController::class, 'store']);
 Route::get('/create-payment', [PaymentController::class, 'createPayment'])->name('payment.create');
 Route::get('/payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 Route::post('/webhooks/mollie', [PaymentController::class, 'handleWebhook'])->name('webhooks.mollie');
-
-Route::get('/rinkel/data', [RinkelController::class, 'getSomeData']);
-Route::post('/rinkel/data', [RinkelController::class, 'postSomeData']);
-Route::get('/rinkel/numbers', [RinkelController::class, 'listAllNumbers']);
-
-Route::post('/webhook/rinkel', [WebhookHandler::class, 'handleWebhook'])->name('webhook.rinkel');
 
 Route::get('/', [LoginController::class, 'index']);
 Route::post('/send-magic-link', [LoginController::class, 'sendMagicLink'])->name('send.magic.link');
