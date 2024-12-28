@@ -32,22 +32,22 @@
         </div>
     </nav>
 
-    <main class="p-6 h-full flex flex-col items-center justify-between grow lg:py-12 gap-6">
+    <main class="p-6 h-full flex flex-col items-center grow lg:py-12 gap-6">
         @guest()
             <div class="w-32 h-32 rounded-full bg-yellow-400"></div>
 
             <h1 class="text-4xl lg:text-6xl lg:max-w-2xl font-bold tracking-tight mb-4 text-balance text-center">Your question, my expertise</h1>
 
-            <h2 class="text-lg lg:text-xl lg:max-w-2xl text-neutral-600 text-balance text-center"><span class="decoration-wavy decoration-blue-600 underline-offset-4 underline">Free</span> business development consulting via Chat</h2>
+            <h2 class="text-lg lg:text-xl lg:max-w-2xl text-neutral-600 dark:text-neutral-400 text-balance text-center"><span class="decoration-wavy decoration-blue-600 underline-offset-4 underline">Free</span> business development consulting via Chat</h2>
 
-            <div class="bg-gray-100 dark:bg-neutral-800 border-b-2 border-gray-200 p-9 rounded-lg flex flex-col gap-6 text-xl">
+            <div class="bg-gray-100 dark:bg-neutral-800 border-b-2 border-gray-200 dark:border-neutral-900 p-9 rounded-lg flex flex-col gap-6 text-xl">
                 <div class="flex flex-col gap-1">
                     <h3 class="w-full font-bold tracking-tight dark:text-neutral-400">Enter your name and email</h3>
 
                     <p class="dark:text-neutral-500">You will receive a link in your inbox to log in.</p>
                 </div>
 
-                <form action="{{ route('send.magic.link') }}" method="POST" class="flex gap-3 w-full">
+                <form action="{{ route('send.magic.link') }}" method="POST" class="flex gap-3 w-full dark:text-neutral-500">
                     @csrf
                     <input type="text" name="name" id="name" required class="block w-full py-2 rounded-md border-gray-300 shadow-sm border-b-2 focus:border-indigo-500 focus:ring-indigo-500" placeholder="Name">
 

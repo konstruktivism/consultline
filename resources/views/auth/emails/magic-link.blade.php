@@ -62,8 +62,8 @@
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td align="center">
-                    <div style="display: inline-block; width: auto; text-align: center;">
-                        Click the button to login <a href="{{ $link }}" style="background-color: #007bff; color: #ffffff; display: inline-block; padding: 10px 20px; text-decoration: none; margin: auto; font-weight: bold; border-radius: 6px;">Login</a>
+                    <div style="display: inline-block; width: auto;">
+                        Thank you for creating a chat! <br /><br /> <a href="{{ $link }}" style="background-color: #007bff; color: #ffffff; display: inline-block; padding: 10px 20px; text-decoration: none; margin: 0; font-weight: bold; border-radius: 6px;">Login</a>
                     </div>
                 </td>
             </tr>
