@@ -18,17 +18,11 @@
 
         .container {
             width: 100%;
-            max-width: 600px;
             margin: 40px auto 0 auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
         }
 
         .header h1 {
@@ -38,7 +32,6 @@
         }
 
         .content {
-            text-align: center;
             line-height: 1.6;
         }
 
@@ -49,7 +42,6 @@
 
 
         .footer {
-            text-align: center;
             margin-top: 20px;
             font-size: 12px;
             color: #999;

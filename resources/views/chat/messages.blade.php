@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white w-full flex flex-col  items-center">
+    <div class="bg-white w-full flex flex-col items-center">
             <div class="px-6 bg-green-200 py-1 text-center text-green-700 rounded-lg">
                 <span id="time-counter">0:00</span>
             </div>

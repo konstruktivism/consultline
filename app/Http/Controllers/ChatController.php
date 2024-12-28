@@ -20,6 +20,7 @@ class ChatController extends Controller
     {
         $chat = Chat::where('user_id', Auth::id())
             ->where('professional_id', $request->professional_id)
+            ->where('created_at', '>=', now()->subMinutes(5))
             ->first();
 
         if (!$chat) {
@@ -59,5 +60,11 @@ class ChatController extends Controller
 
         $messages = $chat->messages()->with('user')->get();
         return view('chat.messages', compact('chat', 'messages'));
+    }
+
+    public function getLatestChat()
+    {
+        $latestChat = Chat::latest()->first();
+        return response()->json($latestChat->id);
     }
 }

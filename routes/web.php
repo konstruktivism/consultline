@@ -36,6 +36,9 @@ Route::get('/magic-link-sent', function () {
     return view('auth.magic-link-sent');
 })->name('magic.link.sent');
 
+Route::get('/latest-chat', [ChatController::class, 'getLatestChat']);
+
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/send-message', [ChatController::class, 'sendMessage'])->middleware('auth');

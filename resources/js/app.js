@@ -4,35 +4,47 @@ import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
 
-const chatMessages = document.getElementById('chat-messages');
+function showNotification(message) {
+    if (Notification.permission === 'granted') {
+        new Notification('New Message', {
+            body: message,
+            icon: '/logo.png' // Optional: path to an icon
+        });
+    } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+                new Notification('New Message', {
+                    body: message,
+                    icon: '/logo.png'
+                });
+            }
+        });
+    }
+}
 
-Echo.private('chat.' + window.chatId)
-    .listen('.MessageSent', (e) => {
-        const newMessage = document.createElement('div');
-        newMessage.classList.add(
-            'flex',
-            e.message.user_id === window.authUserId ? 'justify-end' : 'justify-start',
-            'message',
-            'p-1'
-        );
-        newMessage.innerHTML = `<div class="${e.message.user_id === window.authUserId ? 'bg-green-200' : 'bg-white border'} p-1 px-2 rounded-lg">
-            ${e.message.message}
-        <span class="text-xs text-gray-500 ml-1">${new Date(e.message.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-    </div>`;
-        chatMessages.appendChild(newMessage);
+if (typeof window.chatId !== 'undefined') {
+    const chatMessages = document.getElementById('chat-messages');
 
-        // Show notification
-        if (Notification.permission === 'granted') {
-            console.log('Showing notification for new message');
-            new Notification('New Message', {
-                body: e.message.message,
-                //icon: '/path/to/icon.png' // Optional: path to an icon
-            });
-            console.log('Notification shown');
-        } else {
-            console.log('Notification permission not granted');
-        }
-    });
+    Echo.private('chat.' + window.chatId)
+        .listen('.MessageSent', (e) => {
+            const newMessage = document.createElement('div');
+            newMessage.classList.add(
+                'flex',
+                e.message.user_id === window.authUserId ? 'justify-end' : 'justify-start',
+                'message',
+                'p-1'
+            );
+            newMessage.innerHTML = `<div class="${e.message.user_id === window.authUserId ? 'bg-green-200' : 'bg-white border'} p-1 px-2 rounded-lg">
+                ${e.message.message}
+            <span class="text-xs text-gray-500 ml-1">${new Date(e.message.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+        </div>`;
+            chatMessages.appendChild(newMessage);
+
+            // Show notification
+            showNotification(e.message.message);
+        });
+}
+
 
 if ('serviceWorker' in navigator && 'PushManager' in window) {
     navigator.serviceWorker.register('/service-worker.js')

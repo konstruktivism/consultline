@@ -23,8 +23,43 @@
                             </div>
                         </div>
                     </div>
+
+                    @if($chats && auth()->id() == 1)
+                        <div id="send-message-form" class="flex flex-col gap-3">
+                            @foreach($chats as $chat)
+                                <a href="/chat/messages/{{ $chat->id }}" class="flex gap-6 border-b pb-3">
+                                    {{ $chat->id }}
+
+                                    {{ $chat->created_at->diffForHumans() }}
+                                </a>
+
+                            @endforeach
+
+
+                        </div>
+
+
+                        <div id="chat-messages" class=" border drop-shadow-sm rounded-lg p-3 w-full flex-col gap-px grow h-full hidden">
+                        </div>
+                    @endif
+
+
                 </div>
             </div>
         </div>
     @endauth
+
+    <script>
+        window.chatId = {{ $chats->first()->id ?? null }};
+        window.authUserId = {{ auth()->id() }};
+
+        // refresh page every 2 seconds
+        setInterval(() => {
+            window.location.reload();
+        }, 2000);
+    </script>
+
+
+    @stack('scripts')
 @endsection
+

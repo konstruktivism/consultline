@@ -9,12 +9,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Models\Chat;
 
 class LoginController extends Controller
 {
     public function index()
     {
-        return view('welcome')->with('layout', 'layouts.app');
+        $userId = Auth::id();
+
+        $chats = collect(); // Initialize as an empty collection for consistency
+
+        if ($userId) {
+            $chats = Chat::where(function ($query) use ($userId) {
+                $query->where('user_id', $userId)
+                    ->orWhere('professional_id', $userId);
+            })->orderBy('created_at', 'desc')->limit(5)->get();
+        }
+
+        return view('welcome', [
+            'layout' => 'layouts.app',
+            'chats' => $chats
+        ]);
     }
 
     public function sendMagicLink(Request $request)
