@@ -53,7 +53,7 @@
 
                     <input type="email" name="email" id="email" required class="block w-full py-2 rounded-md border-gray-300 border-b-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Email">
 
-                    <button type="submit" class="bg-blue-600 border-b-2 border-blue-700 text-white px-4 py-2 rounded-md font-bold shrink-0">Inloggen via e-mail</button>
+                    <button type="submit" class="bg-blue-600 border-b-2 border-blue-700 text-white px-4 py-2 rounded-md font-bold shrink-0">Login via e-mail</button>
                 </form>
             </div>
         @endguest
@@ -68,7 +68,7 @@
         </div>
 
         <div class="flex flex-col items-center gap-6 md:gap-0 md:flex-row justify-between px-6 pb-3 text-neutral-500">
-            <a href="mailto:sander@konstruktiv.nl">sander@konstruktiv.nl</a>
+            <a href="mailto:sander@konstruktiv.nl">Support</a>
 
             @auth()
                 <div class="w-full flex gap-3 text-center justify-center items-center text-neutral-400">

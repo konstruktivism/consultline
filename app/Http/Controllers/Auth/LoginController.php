@@ -47,17 +47,20 @@ class LoginController extends Controller
 
     public function loginWithMagicLink($token)
     {
-        $user = User::whereNotNull('magic_link_token')->first();
+        $users = User::whereNotNull('magic_link_token')->get();
 
-        if ($user && Hash::check($token, $user->magic_link_token)) {
-            Auth::login($user);
-            $user->magic_link_token = null;
-            $user->save();
-            return redirect()->intended('/');
+        foreach ($users as $user) {
+            if (Hash::check($token, $user->magic_link_token)) {
+                Auth::login($user);
+                $user->magic_link_token = null;
+                $user->save();
+                return redirect()->intended('/');
+            }
         }
 
         return redirect('/')->withErrors(['token' => 'Invalid or expired magic link.']);
     }
+
 
     public function logout(Request $request)
     {
