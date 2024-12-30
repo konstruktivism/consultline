@@ -47,18 +47,16 @@
                 </div>
             </div>
         </div>
+        <script>
+            window.chatId = {{ $chats->first()->id ?? null }};
+            window.authUserId = {{ auth()->id() }};
+
+            // refresh page every 2 seconds
+            setInterval(() => {
+                window.location.reload();
+            }, 2000);
+        </script>
     @endauth
-
-    <script>
-        window.chatId = {{ $chats->first()->id ?? null }};
-        window.authUserId = {{ auth()->id() }};
-
-        // refresh page every 2 seconds
-        setInterval(() => {
-            window.location.reload();
-        }, 2000);
-    </script>
-
 
     @stack('scripts')
 @endsection
