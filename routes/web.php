@@ -29,7 +29,7 @@ Route::get('/create-payment', [PaymentController::class, 'createPayment'])->name
 Route::get('/payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 Route::post('/webhooks/mollie', [PaymentController::class, 'handleWebhook'])->name('webhooks.mollie');
 
-Route::get('/', [LoginController::class, 'index']);
+Route::get('/', [LoginController::class, 'index'])->name('index');
 Route::post('/send-magic-link', [LoginController::class, 'sendMagicLink'])->name('send.magic.link');
 Route::get('/login/{token}', [LoginController::class, 'loginWithMagicLink'])->name('login.magic.link');
 Route::get('/magic-link-sent', function () {

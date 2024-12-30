@@ -17,7 +17,6 @@
         }
 
         .container {
-            width: 100%;
             margin: 40px auto 0 auto;
             padding: 20px;
             background-color: #fff;
@@ -36,8 +35,6 @@
         }
 
         .content p {
-            margin: 0;
-            margin-bottom: 20px;
         }
 
 
