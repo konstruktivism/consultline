@@ -54,8 +54,7 @@ class LoginController extends Controller
         Mail::send('auth.emails.magic-link', ['link' => $link], function ($message) use ($user) {
             $message->to($user->email);
             $message->subject('Login with Magic Link');
-            $message->from(config('app.name'));
-            $message->sender(config('app.sender'));
+            $message->from(config('app.sender'), config('app.name'));
         });
 
         return redirect()->route('magic.link.sent');
