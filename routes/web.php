@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfessionalController;
-use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\PaymentController;
 use App\Livewire\WebhookHandler;
 use App\Http\Controllers\Auth\LoginController;
@@ -21,9 +19,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/chat/send', [ChatController::class, 'send'])->name('chat.send');
     Route::get('/chat/messages/{chat}', [ChatController::class, 'messages'])->name('chat.messages');
 });
-
-//Route::get('/', [ProfessionalController::class, 'index']);
-Route::post('/meetings', [MeetingController::class, 'store']);
 
 Route::get('/create-payment', [PaymentController::class, 'createPayment'])->name('payment.create');
 Route::get('/payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');

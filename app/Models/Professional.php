@@ -21,11 +21,6 @@ class Professional extends Model
         return $this->hasMany(Availability::class);
     }
 
-    public function meetings()
-    {
-        return $this->hasMany(Meeting::class);
-    }
-
     public function users()
     {
         return $this->belongsToMany(User::class, 'professional_user', 'professional_id', 'user_id');

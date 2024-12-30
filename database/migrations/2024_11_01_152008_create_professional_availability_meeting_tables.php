@@ -24,21 +24,10 @@ class CreateProfessionalAvailabilityMeetingTables extends Migration
             $table->time('end_time');
             $table->timestamps();
         });
-
-        Schema::create('meetings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('professional_id')->constrained()->onDelete('cascade');
-            $table->string('client_name');
-            $table->string('client_email');
-            $table->dateTime('scheduled_at');
-            $table->integer('duration'); // duration in minutes
-            $table->timestamps();
-        });
     }
 
     public function down()
     {
-        Schema::dropIfExists('meetings');
         Schema::dropIfExists('availabilities');
         Schema::dropIfExists('professionals');
     }
