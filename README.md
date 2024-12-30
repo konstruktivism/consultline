@@ -2,18 +2,6 @@
     <img width="1061" style="border-radius: 12px; overflow: hidden; alt="Screenshot 2024-12-30 at 11 58 22" src="https://github.com/user-attachments/assets/1bdff951-c627-40dd-a240-53f8288f4b1f" />
 </a></p>
 
-<p align="center"><a href="https://consultline.konstruktiv.nl" target="_blank">
-<img width="1058" alt="Screenshot 2024-12-30 at 11 58 40" src="https://github.com/user-attachments/assets/8a3124fd-465f-4086-bf9f-32e7fc5bbf22" />
-</a></p>
-
-<p align="center"><a href="https://consultline.konstruktiv.nl" target="_blank">
-<img width="1058" alt="Screenshot 2024-12-30 at 12 00 40" src="https://github.com/user-attachments/assets/b53dfc25-a914-4dd1-87a4-758b9d59a063" />
-</a></p>
-
-<p align="center"><a href="https://consultline.konstruktiv.nl" target="_blank">
-<img width="690" alt="Screenshot 2024-12-28 at 14 38 33" src="https://github.com/user-attachments/assets/a3e0fe1f-7cf1-4ae5-ad8c-9fb20afc5b77" />
-</a></p>
-
 ## About Consultline
 A proof of Concept of the Laravel Reverb package to start a online consulting platform. Consultline is a web application that allows users to ask question and get realtime answers, the site uses browser notifications to get notified.
 
@@ -53,3 +41,15 @@ Add the following configuration to your nginx configuration file:
 
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). 
+
+<p align="center"><a href="https://consultline.konstruktiv.nl" target="_blank">
+<img width="1058" alt="Screenshot 2024-12-30 at 11 58 40" src="https://github.com/user-attachments/assets/8a3124fd-465f-4086-bf9f-32e7fc5bbf22" />
+</a></p>
+
+<p align="center"><a href="https://consultline.konstruktiv.nl" target="_blank">
+<img width="1058" alt="Screenshot 2024-12-30 at 12 00 40" src="https://github.com/user-attachments/assets/b53dfc25-a914-4dd1-87a4-758b9d59a063" />
+</a></p>
+
+<p align="center"><a href="https://consultline.konstruktiv.nl" target="_blank">
+<img width="690" alt="Screenshot 2024-12-28 at 14 38 33" src="https://github.com/user-attachments/assets/a3e0fe1f-7cf1-4ae5-ad8c-9fb20afc5b77" />
+</a></p>
